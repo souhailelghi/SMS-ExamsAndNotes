@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaRegEdit } from "react-icons/fa";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { RiDeleteBin5Line , RiTimeLine } from "react-icons/ri";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ const RoomList = () => {
       
     } catch (error) {
       console.error('Error fetching rooms:', error);
-      toast.error('Erreur lors de la récupération des salles.');
+      toast.error('Erreur lors de la récupération des sports.');
     }
   };
 
@@ -30,7 +30,7 @@ const RoomList = () => {
   const handleDelete = async (roomId) => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
       try {
-        await ApiManager.delete(`/Room/${roomId}`);
+        await ApiManager.delete(`/Sports/delete/${roomId}`);
         fetchRooms();
         toast.success("Salle supprimée avec succès !");
       } catch (error) {
@@ -40,17 +40,31 @@ const RoomList = () => {
     console.log(roomId);
   };
 
+  // add time to sport : 
+  const handleAddTime = async (roomId) => {
+    // if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+    //   try {
+    //     await ApiManager.delete(`/Sports/delete/${roomId}`);
+    //     fetchRooms();
+    //     toast.success("Salle supprimée avec succès !");
+    //   } catch (error) {
+    //     toast.error("Erreur lors de la suppression de la salle.");
+    //   }
+    // }
+    console.log(roomId);
+  };
+
   return (
     <div className="rounded-sm border m-6 border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="flex justify-between items-center mb-6">
         <h4 className="text-xl font-semibold text-black dark:text-white font-satoshi">
-          Salles
+          Sports
         </h4>
         <button
           onClick={() => navigate('/add-room')}
           className="px-4 py-2 bg-blue-950 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
         >
-          Ajouter Salle
+          Ajouter Sport
         </button>
       </div>
 
@@ -96,6 +110,7 @@ const RoomList = () => {
                 <FaRegEdit className='text-graydark cursor-pointer' />
               </Link>
               <RiDeleteBin5Line className='text-red-600 cursor-pointer' onClick={() => handleDelete(room.id)} />
+              <RiTimeLine className='text-red-600 cursor-pointer' onClick={() => handleAddTime(room.id)} />
               
             </div>
           </div>

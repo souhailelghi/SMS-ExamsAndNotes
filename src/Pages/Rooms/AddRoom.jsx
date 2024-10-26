@@ -36,15 +36,26 @@ const AddRoom = () => {
     }
 
     // Prepare the form data for multipart/form-data submission
-    const formData = new FormData();
-    formData.append("CategorieId", categorieId);
-    formData.append("ReferenceSport", referenceSport);
-    formData.append("NbPlayer", nbPlayer);
-    formData.append("Daysoff", daysoff);
-    formData.append("Conditions", conditions);
-    formData.append("Name", name);
-    formData.append("Description", description);
-    formData.append("ImageUpload", imageUpload); // Add the image file
+    // const formData = new FormData();
+    // formData.append("CategorieId", categorieId);
+    // formData.append("ReferenceSport", referenceSport);
+    // formData.append("NbPlayer", nbPlayer);
+    // formData.append("Daysoff", daysoff);
+    // formData.append("Conditions", conditions);
+    // formData.append("Name", name);
+    // formData.append("Description", description);
+    // formData.append("ImageUpload", imageUpload); // Add the image file
+    
+    const formData = {
+      categorieId:categorieId,
+      referenceSport:referenceSport,
+      nbPlayer:nbPlayer,
+      daysoff:daysoff,
+      conditions:conditions,
+      name:name,
+      description:description,
+      imageUpload:imageUpload
+    };
 
     try {
       const response = await axios.post("https://localhost:7125/api/Sports/add", formData, {

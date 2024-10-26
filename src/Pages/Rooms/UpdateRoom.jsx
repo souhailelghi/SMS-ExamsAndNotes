@@ -9,12 +9,33 @@ const UpdateRoom = () => {
   const [roomType, setRoomType] = useState('');
   const [capacity, setCapacity] = useState('');
   const [roomName, setRoomName] = useState('');
+  const [categorieId, setCategorieId] = useState("");
+  const [referenceSport, setReferenceSport] = useState("");
+  const [nbPlayer, setNbPlayer] = useState("");
+  const [daysoff, setDaysoff] = useState("");
+  const [conditions, setConditions] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
+  const [sportCategories, setSportCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchSportCategories = async () => {
+      try {
+        const response = await axios.get("https://localhost:7125/api/SportCategorys/list");
+        setSportCategories(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des catégories sportives:", error);
+      }
+    };
+    fetchSportCategories();
+  }, []);
 
   useEffect(() => {
     const fetchRoom = async () => {
       try {
-        const response = await ApiManager.get(`/Room/GetRoomById/${id}`);
+        const response = await ApiManager.get(`/Sports/${id}`);
         if (response.status === 200) {
           const roomData = response.data;
           setRoomType(roomData.roomType);
@@ -39,14 +60,19 @@ const UpdateRoom = () => {
     }
 
     const formData = {
-      id: id, 
-      roomType: parseInt(roomType),
-      capacity: parseInt(capacity),
-      roomName: roomName,
+      id: id,
+      categorieId:categorieId,
+      referenceSport:referenceSport,
+      nbPlayer:nbPlayer,
+      daysoff:daysoff,
+      conditions:conditions,
+      name:name,
+      description:description,
+      imageUpload:imageUpload
     };
 
     try {
-      const response = await ApiManager.put(`/Room/${id}`, formData);
+      const response = await ApiManager.put(`/Sports/update`, formData);
       if (response.status === 200) {
         toast.success("Salle mise à jour avec succès!");
         navigate('/room-list');
@@ -74,7 +100,53 @@ const UpdateRoom = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="p-6.5">
+            <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
+                <div className="w-full sm:w-1/2">
+                  <label className="mb-2.5 block text-black dark:text-white">
+                    Catégorie sportive <span className="text-meta-1">*</span>
+                  </label>
+                  <select
+                    value={categorieId}
+                    onChange={(e) => setCategorieId(e.target.value)}
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary"
+                    required
+                  >
+                    <option value="" disabled>
+                      Sélectionnez une catégorie sportive
+                    </option>
+                    {sportCategories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Other fields */}
               <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
+                <input type="number" placeholder="Référence" required onChange={(e) => setReferenceSport(e.target.value)} />
+                <input type="number" placeholder="Nombre de joueurs" required onChange={(e) => setNbPlayer(e.target.value)} />
+                <input type="number" placeholder="Jours de repos" required onChange={(e) => setDaysoff(e.target.value)} />
+                <input type="text" placeholder="Conditions" required onChange={(e) => setConditions(e.target.value)} />
+                <input type="text" placeholder="Nom" required onChange={(e) => setName(e.target.value)} />
+                <input type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} />
+
+                {/* Image upload */}
+                  {/* Image upload */}
+              <div className="flex flex-col mb-4.5">
+                <label className="mb-2.5 block text-black dark:text-white">
+                  Image <span className="text-meta-1">*</span>
+                </label>
+                <input
+                  type="file"
+                  onChange={(e) => setImageUpload(e.target.files[0])}
+                  className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none"
+                  required
+                />
+              </div>
+              </div>
+              {/* <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
                 <div className="w-full sm:w-1/2">
                   <label className="mb-2.5 block text-black dark:text-white">
                     Type de salle <span className="text-meta-1">*</span>
@@ -92,8 +164,8 @@ const UpdateRoom = () => {
                     <option value={1}>Salle de pratique</option>
                   </select>
                 </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
+              </div> */}
+              {/* <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
                 <div className="w-full sm:w-1/2">
                   <label className="mb-2.5 block text-black dark:text-white">
                     Capacité <span className="text-meta-1">*</span>
@@ -107,8 +179,8 @@ const UpdateRoom = () => {
                     onChange={(e) => setCapacity(e.target.value)}
                   />
                 </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
+              </div> */}
+              {/* <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
                 <div className="w-full sm:w-1/2">
                   <label className="mb-2.5 block text-black dark:text-white">
                     Nom de la salle <span className="text-meta-1">*</span>
@@ -122,7 +194,18 @@ const UpdateRoom = () => {
                     onChange={(e) => setRoomName(e.target.value)}
                   />
                 </div>
-              </div>
+              </div> */}
+
+
+
+
+
+
+
+
+
+
+              
               <div className="flex justify-end gap-4.5">
                 <button
                   type="button"
