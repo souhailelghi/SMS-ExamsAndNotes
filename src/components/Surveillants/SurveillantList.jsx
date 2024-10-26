@@ -47,7 +47,7 @@ const SurveillantList = () => {
     <div className="rounded-sm border m-6 border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="flex justify-between items-center mb-6">
         <h4 className="text-xl font-semibold text-black dark:text-white font-satoshi">
-        SportCategorys
+          Surveillants 4
         </h4>
         <Link
           to="/add-surveillant"

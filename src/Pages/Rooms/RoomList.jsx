@@ -12,7 +12,9 @@ const RoomList = () => {
 
   const fetchRooms = async () => {
     try {
-      const response = await ApiManager.get('/Room');
+      const response = await ApiManager.get('/Sports/list');
+      console.log(response.data);
+      
       setListData(response.data);
       
     } catch (error) {
@@ -61,7 +63,7 @@ const RoomList = () => {
           </div>
           <div className="p-2.5 text-center xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Type de salle
+              day off
             </h5>
           </div>
           <div className="p-2.5 text-center xl:p-5">
@@ -69,6 +71,7 @@ const RoomList = () => {
               Capacité
             </h5>
           </div>
+          
         </div>
 
         {listData.map((room, key) => (
@@ -78,15 +81,16 @@ const RoomList = () => {
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <p className="hidden text-black dark:text-white sm:block font-semibold">
-                {room.roomName}
+                {room.name}
               </p>
             </div>
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black">{room.roomType == 0?"Salle Normale" : "Salle de Pratique"}</p>
+              <p className="text-black">{room.description == 0?"Salle Normale" : room.daysoff}</p>
             </div>
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black">{room.capacity}</p>
+              <p className="text-black">{room.nbPlayer}</p>
             </div>
+            
             <div className="hidden items-center justify-center text-2xl p-2.5 sm:flex xl:p-5 gap-3">
               <Link to={`/update-room/${room.id}`}>
                 <FaRegEdit className='text-graydark cursor-pointer' />
