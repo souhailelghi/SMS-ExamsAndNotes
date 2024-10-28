@@ -22,7 +22,7 @@ const Sidebar = () => {
           <div className="py-7 px-2">
             <div className="flex items-center justify-between px-4">
               <div className="flex items-center space-x-2">
-                <span className="text-2xl font-extrabold text-orange">
+                <span className="text-2xl font-extrabold text-green">
                   Logo
                 </span>
               </div>
@@ -39,7 +39,7 @@ const Sidebar = () => {
                       className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md"
                     >
                       <FaCalendarAlt className="text-gray-500" />
-                      <span>Planification</span>
+                      <span>Reservations</span>
                     </Link>
                   </li>
                   <li>
@@ -66,7 +66,7 @@ const Sidebar = () => {
                       className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md"
                     >
                       <FaClipboard className="text-gray-500" />
-                      <span>Exam Results</span>
+                      <span>black list</span>
                     </Link>
                   </li>
                   <li>
@@ -75,7 +75,7 @@ const Sidebar = () => {
                       className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md"
                     >
                       <FaChartBar className="text-gray-500" />
-                      <span>Test Results</span>
+                      <span>User list</span>
                     </Link>
                   </li>
                   <li>
@@ -84,7 +84,7 @@ const Sidebar = () => {
                       className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md"
                     >
                       <FaCalendarAlt className="text-gray-500" />
-                      <span>Planification Test</span>
+                      <span>settings</span>
                     </Link>
                   </li>
                   <li>
@@ -93,7 +93,7 @@ const Sidebar = () => {
                       className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-700 p-2 rounded-md"
                     >
                       <FaCalendarAlt className="text-gray-500" />
-                      <span>Varaint Exam</span>
+                      <span>Planing</span>
                     </Link>
                   </li>
                 </ul>

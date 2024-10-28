@@ -142,7 +142,7 @@ function PlanningExam() {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
-                Planifier une examen
+              Reservation
               </h3>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>

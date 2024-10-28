@@ -111,13 +111,13 @@ const AddRoom = () => {
               </div>
 
               {/* Other fields */}
-              <div className="flex flex-col sm:flex-row gap-6 mb-4.5">
-                <input type="number" placeholder="Référence" required onChange={(e) => setReferenceSport(e.target.value)} />
-                <input type="number" placeholder="Nombre de joueurs" required onChange={(e) => setNbPlayer(e.target.value)} />
-                <input type="number" placeholder="Jours de repos" required onChange={(e) => setDaysoff(e.target.value)} />
-                <input type="text" placeholder="Conditions" required onChange={(e) => setConditions(e.target.value)} />
-                <input type="text" placeholder="Nom" required onChange={(e) => setName(e.target.value)} />
-                <input type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} />
+             
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="number" placeholder="Référence" required onChange={(e) => setReferenceSport(e.target.value)} /> <br /><br />
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="number" placeholder="Nombre de joueurs" required onChange={(e) => setNbPlayer(e.target.value)} /><br /><br />
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="number" placeholder="Jours de repos" required onChange={(e) => setDaysoff(e.target.value)} /> <br /><br />
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="text" placeholder="Conditions" required onChange={(e) => setConditions(e.target.value)} /><br /><br />
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="text" placeholder="Nom" required onChange={(e) => setName(e.target.value)} /><br /><br />
+                <input className="w-full rounded-[4px] border-[1px] border-[#E0E0E0] text-[16px] bg-[#FFFFFF] py-3 px-5 text-[#424242] outline-none transition disabled:cursor-default disabled:bg-whiter" type="text" placeholder="Description" required onChange={(e) => setDescription(e.target.value)} /> <br />
 
                 {/* Image upload */}
                   {/* Image upload */}
@@ -132,7 +132,7 @@ const AddRoom = () => {
                   required
                 />
               </div>
-              </div>
+             
 
               <div className="flex justify-end gap-4.5">
                 <button onClick={handleCancel} type="button" className="rounded bg-meta-1 py-2 px-6 text-white">

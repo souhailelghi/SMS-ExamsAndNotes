@@ -5,7 +5,7 @@ import ApiManager from "../../api";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function ListVariantExam() {
+function PlaningsList() {
   const [VariantExams, setVariantExams] = useState([]);
   const navigate = useNavigate();
 
@@ -121,4 +121,4 @@ function ListVariantExam() {
   );
 }
 
-export default ListVariantExam;
+export default PlaningsList;

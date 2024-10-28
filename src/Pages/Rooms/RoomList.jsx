@@ -110,7 +110,9 @@ const RoomList = () => {
                 <FaRegEdit className='text-graydark cursor-pointer' />
               </Link>
               <RiDeleteBin5Line className='text-red-600 cursor-pointer' onClick={() => handleDelete(room.id)} />
+                <Link to={`/planning-list/${room.id}`}>
               <RiTimeLine className='text-red-600 cursor-pointer' onClick={() => handleAddTime(room.id)} />
+                </Link>
               
             </div>
           </div>

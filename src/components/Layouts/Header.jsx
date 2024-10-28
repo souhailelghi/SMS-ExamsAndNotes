@@ -25,10 +25,10 @@ function Header() {
             >
               <div className="flex flex-col">
                 <span className="text-gray-800 font-semibold">
-                  Hamza Bourkha
+                  Jaafar TAGMOUTI
                 </span>
                 <span className="text-gray-400 text-sm">
-                  Directeur Pédagogique
+                  Admin
                 </span>
               </div>
             </div>
