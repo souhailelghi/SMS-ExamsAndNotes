@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom';
 import ApiManager from '../../api';
 
+
+//todo : list sport 
 const RoomList = () => {
   const [listData, setListData] = useState([]);
   const navigate = useNavigate();
@@ -52,6 +54,11 @@ const RoomList = () => {
     //   }
     // }
     console.log(roomId);
+  };
+
+  const handleFetchClick = (id) => {
+    navigate(`/planning-list?id=${id}`); // Navigate with the sport ID
+    console.log("sport",id);
   };
 
   return (
@@ -110,9 +117,12 @@ const RoomList = () => {
                 <FaRegEdit className='text-graydark cursor-pointer' />
               </Link>
               <RiDeleteBin5Line className='text-red-600 cursor-pointer' onClick={() => handleDelete(room.id)} />
-                <Link to={`/planning-list/${room.id}`}>
-              <RiTimeLine className='text-red-600 cursor-pointer' onClick={() => handleAddTime(room.id)} />
-                </Link>
+             
+              <RiTimeLine className='text-red-500 cursor-pointer' onClick={() => handleFetchClick(room.id)} />
+                
+                {/* <button className="btn btn-secondary" onClick={() => handleFetchClick(room.id)}>
+                  Fetch all Date Hours By Id
+                </button> */}
               
             </div>
           </div>

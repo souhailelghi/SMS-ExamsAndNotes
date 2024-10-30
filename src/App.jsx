@@ -23,6 +23,8 @@ import VaraintExamPage from "./Pages/VariantExams/VaraintExamPage.jsx";
 import AddNewVariant from "./Pages/VariantExams/AddNewVariant.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PlaningsList from "./Pages/Rooms/PlaningsList";
+import AddPlanningForm from "./Pages/Plannigs/AddPlanningForm";
+import UpdatePlanning from "./Pages/Plannigs/UpdatePlanning.jsx";
 
 
 function App() {
@@ -58,6 +60,7 @@ function App() {
               <Route path="/Planification" element={<Planification />} />
               <Route path="/add-room" element={<AddRoom />} />
               <Route path="/planning-list" element={<PlaningsList />} />
+              <Route path="/add-planning-form" element={<AddPlanningForm />} />
               <Route path="/room-list" element={<RoomList />} />
               <Route path="/update-room/:id" element={<UpdateRoom />} />
               <Route
@@ -68,6 +71,7 @@ function App() {
               <Route path="/VaraintExam" element={<VaraintExamPage />} />
               <Route path="/ListTest" element={<ListTest />} />
               <Route path="/update-test/:id" element={<EditTest />} />
+              <Route path="/update-planning/:id" element={<UpdatePlanning />} />
             </Routes>
           </div>
         </div>
