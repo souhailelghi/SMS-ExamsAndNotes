@@ -47,6 +47,7 @@ function UpdatePlanning() {
       const response = await axios.get(`https://localhost:7125/api/Plannings/get-by-id/${id}`);
       const { day, timeRanges } = response.data;
       console.log('response.data', response.data.timeRanges);
+      console.log('**response.data', response.data);
       
       setDay(day);
       setTimeRanges(timeRanges);

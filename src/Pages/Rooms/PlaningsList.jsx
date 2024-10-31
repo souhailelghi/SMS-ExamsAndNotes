@@ -159,6 +159,8 @@ function PlaningsList() {
   const fetchVariantExams = async () => {
     try {
       const response = await ApiManager.get(`/Plannings/get-by-sport/${sportId}`);
+      
+      
       setVariantExams(response.data);
     } catch (error) {
       console.error("Error fetching VariantExams:", error);
@@ -177,7 +179,7 @@ function PlaningsList() {
   const handleDelete = async (testId) => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
       try {
-        const response = await ApiManager.delete(`/Test/${testId}`);
+        const response = await ApiManager.delete(`/Plannings/delete/${testId}`);
         if (response.status === 200) {
           setVariantExams(VariantExams.filter((test) => test.id !== testId));
           toast.success("Test supprimé avec succès !");
