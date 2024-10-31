@@ -143,6 +143,8 @@
 // export default PlaningsList;
 
 // PlaningsList Component
+
+//todo: --------------------
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -156,6 +158,28 @@ function PlaningsList() {
   const sportId = new URLSearchParams(useLocation().search).get("id");
   const navigate = useNavigate();
 
+
+   // Helper function to convert day number to day name
+   const getDayName = (day) => {
+    switch (day) {
+      case 0:
+        return "Lundi";
+      case 1:
+        return "Mardi";
+      case 2:
+        return "Mercredi";
+      case 3:
+        return "Jeudi";
+      case 4:
+        return "Vendredi";
+      case 5:
+        return "Samedi";
+      case 6:
+        return "Dimanche";
+      default:
+        return "Unknown Day";
+    }
+  };
   const fetchVariantExams = async () => {
     try {
       const response = await ApiManager.get(`/Plannings/get-by-sport/${sportId}`);
@@ -235,7 +259,7 @@ function PlaningsList() {
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <p className="hidden text-black dark:text-white sm:block font-semibold">
-                {test.day }
+                {getDayName(test.day)}
               </p>
             </div>
             <div className="flex items-center justify-center p-2.5 xl:p-5">
