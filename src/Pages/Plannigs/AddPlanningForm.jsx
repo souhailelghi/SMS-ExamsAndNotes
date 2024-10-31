@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams  ,useLocation } from "react-router-dom";
 
 function AddPlanningForm() {
-  const [sportId, setSportId] = useState('');
-  const [day, setDay] = useState(0);
-  const [timeRanges, setTimeRanges] = useState([{ hourStart: '', hourEnd: '' }]);
-  const [dateCreation, setDateCreation] = useState(new Date().toISOString());
-
+    // const { id } = useParams(); 
+    // const sportIdFromUrl = new URLSearchParams(useLocation().search).get("id");
+    const sportId = new URLSearchParams(useLocation().search).get("id");
+    // const [sportId, setSportId] = useState(sportIdFromUrl || '');
+    const [day, setDay] = useState(0);
+    const [timeRanges, setTimeRanges] = useState([{ hourStart: '', hourEnd: '' }]);
+    const [dateCreation, setDateCreation] = useState(new Date().toISOString());
+    // const sportIds = new URLSearchParams(useLocation().search).get("id");
+    // console.log('id ?: '  , id);
+    console.log(sportId);
+    
+   
+    
+    
+    const navigate = useNavigate();
   const handleTimeRangeChange = (index, field, value) => {
     const newTimeRanges = [...timeRanges];
     newTimeRanges[index][field] = value;
@@ -37,6 +48,7 @@ function AddPlanningForm() {
 
       if (response.ok) {
         alert('Planning added successfully!');
+        navigate("/"); 
       } else {
         alert('Failed to add planning');
       }
@@ -53,7 +65,7 @@ function AddPlanningForm() {
         <input
           type="text"
           value={sportId}
-          onChange={(e) => setSportId(e.target.value)}
+          readOnly
           required
         />
       </div>
