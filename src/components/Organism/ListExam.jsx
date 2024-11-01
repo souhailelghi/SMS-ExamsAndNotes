@@ -11,7 +11,7 @@ function ListExam() {
     fetchExam();
   }, []);
   const fetchExam = () => {
-    ApiManager.get("/Exam")
+    ApiManager.get("/Reservations/list")
       .then((res) => {
         setExams(res.data);
         console.log(res.data);
@@ -59,61 +59,61 @@ function ListExam() {
         <h4 className="text-xl font-semibold text-black dark:text-white font-satoshi">
           List des Reservations
         </h4>
-        <Link
+        {/* <Link
           to="/planningExam/create"
           className="px-4 py-2 bg-blue-950 text-white rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
         >
           Ajouter Reservation
-        </Link>
+        </Link> */}
       </div>
 
       <div className="flex flex-col font-satoshi">
         <div className="grid grid-cols-2 rounded-sm bg-blue-100 dark:bg-meta-4 text-graydark sm:grid-cols-9">
           <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Id Student
+            </h5>
+          </div>
+          <div className="p-2.5 text-center xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Id Sport
+            </h5>
+          </div>
+          <div className="p-2.5 text-center xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              TIME
+            </h5>
+          </div>
+          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
               Date
             </h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Duration
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Unité de formation
-            </h5>
-          </div>
           <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Filière
+             List Student
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Année
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Surveillant
             </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          </div> */}
+          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Salle
             </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          </div> */}
+          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Heure_debut
             </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          </div> */}
+          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Actions
             </h5>
-          </div>
+          </div> */}
         </div>
 
         {exams.map((exam, key) => (
@@ -127,19 +127,23 @@ function ListExam() {
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <p className="hidden text-black dark:text-white sm:block font-semibold">
-                {exam.examDate}
+                {exam.studentId}
               </p>
             </div>
             <div className="flex items-center justify-center p-2.5 xl:p-5 ">
               <p className="hidden text-black dark:text-white sm:block font-semibold">
-                {exam.duration}
+                {exam.sportId}
               </p>
             </div>
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black">{exam.unitOfFormation.name}</p>
+              <p className="text-black">{exam.hourStart}</p>
+              <p className="text-black">{exam.hourEnd}</p>
             </div>
             <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              {exam.filiere.nomFiliere}
+              {exam.onlyDate}
+            </div>
+            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+              {exam.codeUIRList}
             </div>
             <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
               {listAnne.map((anne) => {
@@ -159,15 +163,15 @@ function ListExam() {
               {exam.startTime}
             </div>
             <div className="hidden items-center justify-center text-2xl p-2.5 sm:flex xl:p-5 gap-3">
-              <Link to={`/update/`}>
+              {/* <Link to={`/update/`}>
                 <FaRegEdit className="text-graydark cursor-pointer" />
-              </Link>
-              <MdDelete
+              </Link> */}
+              {/* <MdDelete
                 className="cursor-pointer text-red-500"
                 onClick={() => {
                   handleDelete(exam.id);
                 }}
-              />
+              /> */}
             </div>
           </div>
         ))}
